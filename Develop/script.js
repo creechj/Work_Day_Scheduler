@@ -5,7 +5,7 @@ $(document).ready(function () {
   // displays current date in header
   // interval refreshes every second to keep display up-to-date
   var todaysDate = function() {
-    $('#currentDay').text(dayjs().format('MMMM D, YYYY'));
+    $('#currentDay').text(dayjs().format('dddd, MMMM D'));
   };
   setInterval(todaysDate, 1000);
 
@@ -20,13 +20,7 @@ $(document).ready(function () {
    localStorage.setItem(parID, blockTxt)
   }
   $('.saveBtn').on('click', saveBlock);
-
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  
+ 
   // current hour in 24-hour format (converted to number)
   var currentHour = parseInt(dayjs().format('HH'));
   console.log(currentHour, typeof(currentHour));
@@ -37,6 +31,7 @@ $(document).ready(function () {
     var parID = $(this).attr('id');
     console.log(parID);
     
+    // extracts number from id string
     var blockTime = parseInt(parID.substring(parID.indexOf('-')+1));
     console.log(blockTime,typeof(blockTime));
     
@@ -47,9 +42,10 @@ $(document).ready(function () {
     } else {
       $(this).attr('class', 'row time-block future');
     }
-  });
 
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
+    // retrieves calendar block text from local storage
+    // assigns to calendar block textarea by parent div id's
+    var blockTxt = localStorage.getItem(parID);
+    $('#' + parID).children('textarea').val(blockTxt);
+  });
 });
