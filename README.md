@@ -21,7 +21,7 @@ The site can be viewed at: https://creechj.github.io/Work_Day_Scheduler
 
 GitHub repository for the site can be found here: https://github.com/creechj/Work_Day_Scheduler
 
-![Screenshot of Quiz Start View](Develop/work_day_scheduler.png)
+![Screenshot of Quiz Start View](assets/work_day_scheduler.png)
 
 ## Credits
 
